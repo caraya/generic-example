@@ -1,0 +1,99 @@
+@scope (card-grid-demo) {
+  :scope {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  /* 1. Inward Reset: Shield against global article typography */
+  h3, p, div, article {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .card-item {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex: 1 1 240px;
+  }
+
+  .card-badge {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: var(--card-badge-bg, #f1f5f9);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--card-text, #0f172a);
+    margin-bottom: 0.25rem;
+  }
+
+  .card-meta {
+    font-size: 0.8rem;
+    color: var(--card-meta, #64748b);
+  }
+
+  /* Solution 1: Baseline (Plain Flex Wrap) */
+  :scope[data-solution="baseline"] .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Solution 2: Container-Query Adaptive Layout */
+  :scope[data-solution="cq"] .grid-container {
+    display: flex;
+    flex-direction: column;
+
+    /* When the harness container exceeds 520px, pivot to a 2-column flex row */
+    @container example-viewport (width >= 520px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .card-item {
+        flex: 1 1 calc(50% - 0.5rem);
+      }
+    }
+
+    /* When the harness container exceeds 720px, pivot to 3 columns with stacked card content */
+    @container example-viewport (width >= 720px) {
+      .card-item {
+        flex: 1 1 calc(33.333% - 0.67rem);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.25rem;
+      }
+
+      .card-badge {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  /* Solution 3: Modern Auto-Fit CSS Grid */
+  :scope[data-solution="autofit"] .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+}

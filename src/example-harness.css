@@ -1,0 +1,112 @@
+example-harness {
+  display: block;
+  margin-block: 2.5rem;
+  border: 1px solid var(--harness-border, #cbd5e1);
+  border-radius: 8px;
+  background: var(--harness-bg, #f8fafc);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.harness-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--harness-bar-bg, #ffffff);
+  border-bottom: 1px solid var(--harness-border, #cbd5e1);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.875rem;
+}
+
+.harness-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.harness-title {
+  font-weight: 600;
+  color: var(--harness-text-title, #0f172a);
+}
+
+.harness-readouts {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.harness-readout {
+  color: var(--harness-text-muted, #64748b);
+  font-variant-numeric: tabular-nums;
+}
+
+.harness-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.control-prefix {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--harness-text-muted, #64748b);
+}
+
+/* Viewport & Container Query Contexts */
+.harness-viewport {
+  overflow: auto;
+  margin: 1.5rem auto;
+  background: var(--harness-canvas-bg, #ffffff);
+  border: 1px dashed var(--harness-boundary, #94a3b8);
+  border-radius: 4px;
+  box-sizing: border-box;
+  container-name: example-viewport;
+}
+
+.harness-viewport.resize-horizontal {
+  resize: horizontal;
+  container-type: inline-size;
+}
+
+.harness-viewport.resize-vertical {
+  resize: vertical;
+  container-type: size;
+}
+
+.harness-viewport.resize-both {
+  resize: both;
+  container-type: size;
+}
+
+.harness-viewport.resize-none {
+  resize: none;
+  container-type: inline-size;
+}
+
+.harness-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.harness-btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--harness-border, #cbd5e1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.harness-btn:hover {
+  background: var(--harness-hover-bg, #e2e8f0);
+}

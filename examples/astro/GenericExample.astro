@@ -1,0 +1,137 @@
+---
+export type ResizeMode = 'horizontal' | 'vertical' | 'both' | 'none';
+
+interface SolutionOption {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  title?: string;
+  resize?: ResizeMode;
+  initialWidth?: number;
+  minWidth?: number;
+  maxWidth?: number;
+  initialHeight?: number;
+  minHeight?: number;
+  maxHeight?: number;
+  solutions?: SolutionOption[];
+  activeSolution?: string;
+  class?: string;
+}
+
+const {
+  title,
+  resize = 'horizontal',
+  initialWidth = 780,
+  minWidth = 320,
+  maxWidth = 960,
+  initialHeight = 360,
+  minHeight = 180,
+  maxHeight = 700,
+  solutions = [],
+  activeSolution = solutions[0]?.id ?? '',
+  class: className = '',
+} = Astro.props;
+
+const hasHorizontal = resize === 'horizontal' || resize === 'both';
+const hasVertical = resize === 'vertical' || resize === 'both';
+---
+
+<example-harness
+  class:list={['harness-root', className]}
+  data-resize-mode={resize}
+  data-initial-width={initialWidth}
+  data-min-width={minWidth}
+  data-max-width={maxWidth}
+  data-initial-height={initialHeight}
+  data-min-height={minHeight}
+  data-max-height={maxHeight}
+  data-solution={activeSolution}
+>
+  <header class="harness-bar">
+    <div class="harness-meta">
+      {title && <span class="harness-title">{title}</span>}
+      <div class="harness-readouts">
+        {hasHorizontal && (
+          <label class="harness-readout">
+            W: <output data-width-label>{initialWidth}px</output>
+          </label>
+        )}
+        {hasVertical && (
+          <label class="harness-readout">
+            H: <output data-height-label>{initialHeight}px</output>
+          </label>
+        )}
+      </div>
+    </div>
+
+    <div class="harness-controls">
+      {hasHorizontal && (
+        <div class="control-group">
+          <span class="control-prefix">W</span>
+          <input
+            type="range"
+            min={minWidth}
+            max={maxWidth}
+            value={initialWidth}
+            data-slider-width
+            aria-label="Adjust container width"
+          />
+        </div>
+      )}
+
+      {hasVertical && (
+        <div class="control-group">
+          <span class="control-prefix">H</span>
+          <input
+            type="range"
+            min={minHeight}
+            max={maxHeight}
+            value={initialHeight}
+            data-slider-height
+            aria-label="Adjust container height"
+          />
+        </div>
+      )}
+
+      {solutions.length > 0 && (
+        <select data-solution-select aria-label="Select layout solution">
+          {solutions.map((item) => (
+            <option value={item.id} selected={item.id === activeSolution}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+      )}
+
+      <button type="button" data-reset-btn class="harness-btn" title="Reset layout dimensions">
+        Reset
+      </button>
+    </div>
+  </header>
+
+  <div
+    class:list={['harness-viewport', `resize-${resize}`]}
+    data-viewport
+    style={`
+      width: ${hasHorizontal ? `${initialWidth}px` : '100%'};
+      min-width: ${hasHorizontal ? `${minWidth}px` : 'auto'};
+      max-width: 100%;
+      height: ${hasVertical ? `${initialHeight}px` : 'auto'};
+      min-height: ${hasVertical ? `${minHeight}px` : 'auto'};
+      max-height: ${hasVertical ? `${maxHeight}px` : 'none'};
+    `}
+  >
+    <div class="harness-content">
+      <slot />
+    </div>
+  </div>
+</example-harness>
+
+<script>
+  import './example-harness.ts';
+</script>
+<style>
+  @import './example-harness.css';
+</style>

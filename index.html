@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>generic-example</title>
+  <!-- 2. Scripts (registers both custom elements in the browser) -->
+  <script type="module" src="/src/ExampleHarness.ts"></script>
+  <script type="module" src="/src/CardGridDemo.ts"></script>
+</head>
+
+<body>
+  <h1>Example Harness custom element </h1>
+
+  <example-harness data-resize-mode="horizontal" data-initial-width="720" data-solution="cq">
+    <header class="harness-bar">
+      <div class="harness-meta">
+        <span class="harness-title">Adaptive Card Grid Demo</span>
+        <output data-width-label>720px</output>
+      </div>
+      <div class="harness-controls">
+        <input type="range" min="320" max="960" value="720" data-slider-width>
+        <select data-solution-select>
+          <option value="baseline">1. Baseline Flex Wrap</option>
+          <option value="cq" selected>2. Container Query Shift</option>
+          <option value="autofit">3. Grid Auto-Fit</option>
+        </select>
+        <button type="button" data-reset-btn class="harness-btn">Reset</button>
+      </div>
+    </header>
+
+    <div class="harness-viewport resize-horizontal" data-viewport style="width: 720px;">
+      <div class="harness-content">
+        <card-grid-demo data-solution="cq">
+          <div class="grid-container">
+            <article class="card-item">
+              <span class="card-badge">⚡</span>
+              <div>
+                <h3 class="card-title">Performance</h3>
+                <p class="card-meta">Zero CLS, ~1 KB runtime footprint</p>
+              </div>
+            </article>
+            <article class="card-item">
+              <span class="card-badge">📐</span>
+              <div>
+                <h3 class="card-title">Container Units</h3>
+                <p class="card-meta">Responds to immediate parent width</p>
+              </div>
+            </article>
+            <article class="card-item">
+              <span class="card-badge">🛡️</span>
+              <div>
+                <h3 class="card-title">Scoped Isolation</h3>
+                <p class="card-meta">Immune to inward article CSS bleed</p>
+              </div>
+            </article>
+          </div>
+        </card-grid-demo>
+      </div>
+    </div>
+  </example-harness>
+</body>
+
+</html>

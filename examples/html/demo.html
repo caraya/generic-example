@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/example-harness.css">
+  <script type="module" src="/js/example-harness.js"></script>
+
+</head>
+
+<body>
+
+  <example-harness data-resize-mode="horizontal" data-initial-width="720">
+    <header class="harness-bar">
+      <div class="harness-meta">
+        <span class="harness-title">Card Grid Wrap</span>
+        <output data-width-label>720px</output>
+      </div>
+      <div class="harness-controls">
+        <input type="range" min="320" max="960" value="720" data-slider-width>
+        <button type="button" data-reset-btn class="harness-btn">Reset</button>
+      </div>
+    </header>
+
+    <div class="harness-viewport resize-horizontal" data-viewport style="width: 720px;">
+      <div class="harness-content">
+        <my-layout-demo>...</my-layout-demo>
+      </div>
+    </div>
+  </example-harness>
+</body>
+
+</html>
