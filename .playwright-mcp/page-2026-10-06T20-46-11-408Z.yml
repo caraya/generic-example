@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - heading "Example Harness custom element" [level=1] [ref=e2]
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: Adaptive Card Grid Demo
+        - status [ref=e7]: 720px
+      - generic [ref=e8]:
+        - slider [ref=e9]: "720"
+        - combobox [ref=e10]:
+          - option "1. Baseline Flex Wrap"
+          - option "2. Container Query Shift" [selected]
+          - option "3. Grid Auto-Fit"
+        - button "Reset" [ref=e11] [cursor=pointer]
+    - generic [ref=e15]:
+      - article [ref=e16]:
+        - generic [ref=e17]: ⚡
+        - generic [ref=e18]:
+          - heading "Performance" [level=3] [ref=e19]
+          - paragraph [ref=e20]: Zero CLS, ~1 KB runtime footprint
+      - article [ref=e21]:
+        - generic [ref=e22]: 📐
+        - generic [ref=e23]:
+          - heading "Container Units" [level=3] [ref=e24]
+          - paragraph [ref=e25]: Responds to immediate parent width
+      - article [ref=e26]:
+        - generic [ref=e27]: 🛡️
+        - generic [ref=e28]:
+          - heading "Scoped Isolation" [level=3] [ref=e29]
+          - paragraph [ref=e30]: Immune to inward article CSS bleed
+  - generic [ref=e31]:
+    - banner [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]: Text Box Trim
+        - status [ref=e35]: 600px
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: Width
+          - slider "Width" [ref=e39]: "600"
+        - button "Reset" [ref=e40] [cursor=pointer]
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]: Text box trim
+          - combobox "Text box trim" [ref=e48]:
+            - option "none"
+            - option "trim-start"
+            - option "trim-end"
+            - option "trim-both" [selected]
+        - generic [ref=e49]:
+          - generic [ref=e50]: Start edge
+          - combobox "Start edge" [ref=e51]:
+            - option "auto"
+            - option "text"
+            - option "cap" [selected]
+            - option "ex"
+        - generic [ref=e52]:
+          - generic [ref=e53]: End edge
+          - combobox "End edge" [ref=e54]:
+            - option "text"
+            - option "alphabetic" [selected]
+        - generic [ref=e55]:
+          - generic [ref=e56]: Font family
+          - combobox "Font family" [ref=e57]:
+            - option "Verdana" [selected]
+            - option "Helvetica"
+            - option "Courier"
+            - option "Arial"
+            - option "Georgia"
+            - option "Times New Roman"
+            - option "System UI"
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        - paragraph [ref=e61]: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      - status [ref=e62]: "text-box-trim: trim-both; text-box-edge: cap alphabetic; font-family: Verdana, sans-serif;"

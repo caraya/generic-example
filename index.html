@@ -8,6 +8,7 @@
   <!-- 2. Scripts (registers both custom elements in the browser) -->
   <script type="module" src="/src/ExampleHarness.ts"></script>
   <script type="module" src="/src/CardGridDemo.ts"></script>
+  <script type="module" src="/src/TextBoxTrimDemo.ts"></script>
 </head>
 
 <body>
@@ -57,6 +58,28 @@
             </article>
           </div>
         </card-grid-demo>
+      </div>
+    </div>
+  </example-harness>
+
+  <example-harness data-resize-mode="horizontal" data-initial-width="600">
+    <header class="harness-bar">
+      <div class="harness-meta">
+        <span class="harness-title">Text Box Trim</span>
+        <output data-width-label>600px</output>
+      </div>
+      <div class="harness-controls">
+        <label class="control-group">
+          <span class="control-prefix">Width</span>
+          <input type="range" min="320" max="960" value="600" data-slider-width>
+        </label>
+        <button type="button" data-reset-btn class="harness-btn">Reset</button>
+      </div>
+    </header>
+
+    <div class="harness-viewport resize-horizontal" data-viewport style="width: 600px; max-width: 100%;">
+      <div class="harness-content">
+        <text-box-demo data-solution="untrimmed"></text-box-demo>
       </div>
     </div>
   </example-harness>
